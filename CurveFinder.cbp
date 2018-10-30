@@ -30,9 +30,13 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 			<Add option="-fexceptions" />
+			<Add directory="src/ext" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="src/ext/json.cpp" />
+		<Unit filename="src/ext/json.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

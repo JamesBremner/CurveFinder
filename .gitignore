@@ -30,4 +30,9 @@
 *.exe
 *.out
 *.app
+
+
 *.depend
+*.layout
+*.kml
+src/ext/*
