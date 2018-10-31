@@ -68,16 +68,16 @@ public:
     {
         stringstream ss;
         ss << "\n" << myName << ": (" << myLine.size() << ")\n";
-//        int k = -1;
-//        for( auto& l : myLine )
-//        {
-//            if( k++ == 1 )
-//            {
-//                k = 0;
-//                ss << "\n";
-//            }
-//            ss << l.Text() << " || ";
-//        }
+        int k = -1;
+        for( auto& l : myLine )
+        {
+            if( k++ == 1 )
+            {
+                k = 0;
+                ss << "\n";
+            }
+            ss << l.Text() << " || ";
+        }
         ss << "Angles: ";
         for( auto& a : myAngles )
         {
@@ -165,6 +165,10 @@ void Test()
     pm.Add( cLine(0,0,1,0));
     pm.Add( cLine(1,0,2,0.05));
     pm.Angles();
+
+    cout << "BEGIN ANGLE UNIT TEST\n";
+    cout << pm.Text() << "\n";
+    cout << "END ANGLE UNIT TEST\n";
 }
 void ReadKML()
 {
@@ -217,6 +221,7 @@ void ReadKML()
 int main()
 {
     Test();
+    exit(0);
 
     ReadKML();
 
