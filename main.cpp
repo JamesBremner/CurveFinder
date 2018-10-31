@@ -4,6 +4,7 @@
 #include <streambuf>
 #include <cmath>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -66,7 +67,7 @@ public:
     string Text()
     {
         stringstream ss;
-        ss << "\n" << myName << ": (" << myLine.size() << ")\n" << myC << "\n";
+        ss << "\n" << myName << ": (" << myLine.size() << ")\n";
 //        int k = -1;
 //        for( auto& l : myLine )
 //        {
@@ -122,6 +123,11 @@ public:
         }
     }
 
+    vector< double >& getAngles()
+    {
+        return myAngles;
+    }
+
 private:
     void Parse()
     {
@@ -150,6 +156,8 @@ private:
     }
 
 };
+
+vector < cPlaceMark > vPlaceMark;
 
 void Test()
 {
@@ -199,7 +207,7 @@ void ReadKML()
             //vLine.push_back( cLine( route_name, sc ) );
             cPlaceMark pm( route_name, sc );
             cout << pm.Text() << "\n";
-            //exit(0);
+            vPlaceMark.push_back( pm );
         }
 
         //cout << str << "\n";
@@ -212,15 +220,20 @@ int main()
 
     ReadKML();
 
-    // Display lines stored in vector
-
-    int k = 0;
-//    for( auto& l : vLine )
-//    {
-//        if( k++ > 5 )
-//            break;
-//        cout << l.Text() << "\n\n";
-//    }
-
+    vector <double> AllAngles;
+    for( auto& pm : vPlaceMark )
+    {
+        AllAngles.insert( AllAngles.end(), pm.getAngles().begin(), pm.getAngles().end() );
+    }
+    double max = *max_element( AllAngles.begin(), AllAngles.end() );
+    vector<int> histo( 100 );
+    for( auto a : AllAngles )
+    {
+        histo[ (int)a ]++;
+    }
+    for( int k = 0; k < 99; k++ )
+    {
+        cout << k <<" " << histo[k] << "\n";
+    }
     return 0;
 }

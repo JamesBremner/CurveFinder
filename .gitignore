@@ -36,3 +36,6 @@
 *.layout
 *.kml
 src/ext/*
+*.csv
+*.txt
+*.zip
