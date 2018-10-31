@@ -159,13 +159,18 @@ private:
 
 vector < cPlaceMark > vPlaceMark;
 
+/** Unit tests - tests angle calculation */
 void Test()
 {
+    // Add two lines to the place mark
     cPlaceMark pm;
-    pm.Add( cLine(0,0,1,0));
-    pm.Add( cLine(1,0,2,0.05));
+    pm.Add( cLine( 0,0, 1,0 ));
+    pm.Add( cLine( 1,0, 2,0.05 ));
+
+    // Calculate angles between lines in place mark
     pm.Angles();
 
+    // Display results
     cout << "BEGIN ANGLE UNIT TEST\n";
     cout << pm.Text() << "\n";
     cout << "END ANGLE UNIT TEST\n";
